@@ -115,6 +115,9 @@ public class InAppBrowser extends CordovaPlugin {
     private final static int FILECHOOSER_REQUESTCODE = 1;
     private final static int FILECHOOSER_REQUESTCODE_LOLLIPOP = 2;
 
+    
+    
+    
     /**
      * Executes the request and returns PluginResult.
      *
@@ -688,7 +691,7 @@ public class InAppBrowser extends CordovaPlugin {
                 
                 
                 //Title
-                title=new TextView(this);
+                title=new TextView(cordova.getActivity());
                 LinearLayout.LayoutParams titleLayoutParams = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
                 titleLayoutParams.gravity=Gravity.CENTER;
                 
