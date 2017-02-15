@@ -18,17 +18,20 @@
 */
 package org.apache.cordova.inappbrowser;
 
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.provider.Browser;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -678,6 +681,10 @@ public class InAppBrowser extends CordovaPlugin {
                 edittext.setLayoutParams(textLayoutParams);
                 edittext.setId(Integer.valueOf(4));
                 edittext.setSingleLine(true);
+                edittext.setGravity(Gravity.CENTER);
+                edittext.setEllipsize(TextUtils.TruncateAt.END);
+                edittext.setBackgroundColor(android.graphics.Color.TRANSPARENT);
+                
                 //edittext.setText(url);
                 edittext.setInputType(InputType.TYPE_TEXT_VARIATION_URI);
                 edittext.setImeOptions(EditorInfo.IME_ACTION_GO);
@@ -935,11 +942,12 @@ public class InAppBrowser extends CordovaPlugin {
                 newloc = "http://" + url;
             }
 
+            /*
             // Update the UI if we haven't already
             if (!newloc.equals(edittext.getText().toString())) {
                 edittext.setText(newloc);
              }
-
+            */
             try {
                 JSONObject obj = new JSONObject();
                 obj.put("type", LOAD_START_EVENT);
