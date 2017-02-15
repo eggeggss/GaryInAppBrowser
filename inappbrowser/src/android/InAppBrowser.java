@@ -18,6 +18,8 @@
 */
 package org.apache.cordova.inappbrowser;
 
+import ThemeableBrowser.PageLoadListener;
+import ThemeableBrowser.ThemeableBrowserClient;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -781,7 +783,28 @@ public class InAppBrowser extends CordovaPlugin {
                 });
                 
                 
-                              
+               
+
+                WebViewClient client = new InAppBrowserClient(thatWebView, new PageLoadListener() {
+                    @Override
+                    public void onPageFinished(String url, boolean canGoBack, boolean canGoForward) {
+                        if (inAppWebView != null
+                                && title != null && features.title != null
+                                && features.title.staticText == null
+                                && features.title.showPageTitle) {
+                            title.setText(inAppWebView.getTitle());
+                        }
+
+                        if (back != null) {
+                            back.setEnabled(canGoBack || features.backButtonCanClose);
+                        }
+
+                        if (forward != null) {
+                            forward.setEnabled(canGoForward);
+                        }
+                    }
+                });
+                
                 WebViewClient client = new InAppBrowserClient(thatWebView, title);
                
                 
@@ -1051,11 +1074,12 @@ public class InAppBrowser extends CordovaPlugin {
             }
         }
 
-
-
+        @Override
+        @SuppressWarnings(value={"unchecked", "deprecation"})
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
 
+            
             if(Title!=null)
 		    {
 		    	Title.setText(webView.getTitle());
