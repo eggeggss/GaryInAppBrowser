@@ -673,7 +673,7 @@ public class InAppBrowser extends CordovaPlugin {
                     }
                 });
 
-                // Edit Text Box
+                // Edit Text Box2
                 edittext = new EditText(cordova.getActivity());
                 RelativeLayout.LayoutParams textLayoutParams = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
                 textLayoutParams.addRule(RelativeLayout.RIGHT_OF, 1);
