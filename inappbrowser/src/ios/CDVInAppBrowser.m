@@ -649,7 +649,7 @@
     
     UIBarButtonItem *title=[[UIBarButtonItem alloc] initWithCustomView:self.addressLabel];
     
-    [self.toolbar setItems:@[self.closeButton,flexibleSpaceButton, title, flexibleSpaceButton,self.backButton, fixedSpaceButton, self.forwardButton]];
+    [self.toolbar setItems:@[self.backButton,flexibleSpaceButton,title,flexibleSpaceButton,self.closeButton]];
     
 
     self.view.backgroundColor = [UIColor grayColor];
@@ -673,7 +673,8 @@
     self.closeButton.tintColor = [UIColor colorWithRed:60.0 / 255.0 green:136.0 / 255.0 blue:230.0 / 255.0 alpha:1];
 
     NSMutableArray* items = [self.toolbar.items mutableCopy];
-    [items replaceObjectAtIndex:0 withObject:self.closeButton];
+    NSInteger count=[items count]-1;
+    [items replaceObjectAtIndex:count withObject:self.closeButton];
     [self.toolbar setItems:items];
 }
 
@@ -1114,5 +1115,3 @@
 
 @end
 
-Contact GitHub API Training Shop Blog About
-© 2017 GitHub, Inc. Terms Privacy Security Status Help
