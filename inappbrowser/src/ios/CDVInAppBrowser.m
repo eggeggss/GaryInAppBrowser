@@ -647,7 +647,7 @@
     self.addressLabel.textAlignment=NSTextAlignmentCenter;
     self.addressLabel.numberOfLines=1;
     self.addressLabel.lineBreakMode=NSLineBreakByTruncatingTail;
-    self.addressLabel.text=@"";
+    self.addressLabel.text=@"initial...";
     
     UIBarButtonItem *title=[[UIBarButtonItem alloc] initWithCustomView:self.addressLabel];
     
@@ -893,7 +893,7 @@
 {
     // loading url, start spinner, update back/forward
 
-    //self.addressLabel.text = NSLocalizedString(@"Loading...", nil);
+    self.addressLabel.text = NSLocalizedString(@"Start...", nil);
     self.backButton.enabled = theWebView.canGoBack;
     self.forwardButton.enabled = theWebView.canGoForward;
 
