@@ -1,3 +1,21 @@
+Skip to content
+This repository
+Search
+Pull requests
+Issues
+Gist
+ @eggeggss
+ Sign out
+ Unwatch 1
+  Star 0
+ Fork 0 eggeggss/GaryInAppBrowser
+ Code  Issues 0  Pull requests 0  Projects 0  Wiki  Pulse  Graphs  Settings
+Tree: e3eaa24044 Find file Copy pathGaryInAppBrowser/inappbrowser/src/ios/CDVInAppBrowser.m
+e3eaa24  7 hours ago
+ R700 modify ios inappbrowser
+0 contributors
+RawBlameHistory     
+1119 lines (922 sloc)  44 KB
 /*
  Licensed to the Apache Software Foundation (ASF) under one
  or more contributor license agreements.  See the NOTICE file
@@ -6,9 +24,7 @@
  to you under the Apache License, Version 2.0 (the
  "License"); you may not use this file except in compliance
  with the License.  You may obtain a copy of the License at
-
  http://www.apache.org/licenses/LICENSE-2.0
-
  Unless required by applicable law or agreed to in writing,
  software distributed under the License is distributed on an
  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -647,7 +663,7 @@
     self.addressLabel.textAlignment=NSTextAlignmentCenter;
     self.addressLabel.numberOfLines=1;
     self.addressLabel.lineBreakMode=NSLineBreakByTruncatingTail;
-    self.addressLabel.text=@"initial...";
+    self.addressLabel.text=@"";
     
     UIBarButtonItem *title=[[UIBarButtonItem alloc] initWithCustomView:self.addressLabel];
     
@@ -893,7 +909,7 @@
 {
     // loading url, start spinner, update back/forward
 
-    self.addressLabel.text = NSLocalizedString(@"Start...", nil);
+    //self.addressLabel.text = NSLocalizedString(@"Loading...", nil);
     self.backButton.enabled = theWebView.canGoBack;
     self.forwardButton.enabled = theWebView.canGoForward;
 
@@ -1116,3 +1132,5 @@
 
 @end
 
+Contact GitHub API Training Shop Blog About
+© 2017 GitHub, Inc. Terms Privacy Security Status Help
