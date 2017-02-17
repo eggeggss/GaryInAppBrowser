@@ -642,11 +642,21 @@
     self.backButton.enabled = YES;
     self.backButton.imageInsets = UIEdgeInsetsZero;
 
-    [self.toolbar setItems:@[self.closeButton, flexibleSpaceButton, self.backButton, fixedSpaceButton, self.forwardButton]];
+
+    self.addressLabel.frame=CGRectMake(10, 0, self.view.frame.size.width-200, 44);
+    self.addressLabel.textAlignment=NSTextAlignmentCenter;
+    self.addressLabel.numberOfLines=1;
+    self.addressLabel.lineBreakMode=NSLineBreakByTruncatingTail;
+    self.addressLabel.text=@"";
+    
+    UIBarButtonItem *title=[[UIBarButtonItem alloc] initWithCustomView:self.addressLabel];
+    
+    [self.toolbar setItems:@[self.closeButton,flexibleSpaceButton, title, flexibleSpaceButton,self.backButton, fixedSpaceButton, self.forwardButton]];
+    
 
     self.view.backgroundColor = [UIColor grayColor];
     [self.view addSubview:self.toolbar];
-    [self.view addSubview:self.addressLabel];
+    //[self.view addSubview:self.addressLabel];
     [self.view addSubview:self.spinner];
 }
 
@@ -904,9 +914,10 @@
 
 - (void)webViewDidFinishLoad:(UIWebView*)theWebView
 {
-    // update url, stop spinner, update back/forward
-
-    self.addressLabel.text = [self.currentURL absoluteString];
+    // update title 
+	self.addressLabel.text=[theWebView stringByEvaluatingJavaScriptFromString:@"document.title"];
+   
+    //self.addressLabel.text = [self.currentURL absoluteString];
     self.backButton.enabled = theWebView.canGoBack;
     self.forwardButton.enabled = theWebView.canGoForward;
 
